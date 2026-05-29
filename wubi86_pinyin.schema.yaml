@@ -2,13 +2,13 @@
 # encoding: utf-8
 
 schema:
-  schema_id: wubi06_pinyin
-  name: "新世纪五笔·拼音"
+  schema_id: wubi86_pinyin
+  name: "五笔86·拼音"
   version: "0.9"
   author:
     - sean gong
   description: |
-    五笔新世纪版+拼音混合输入
+    五笔86版+拼音混合输入
   dependencies:
     - pinyin_simp
 
@@ -47,8 +47,8 @@ engine:
 
 # 五笔主输入配置
 translator:
-  dictionary: wubi06
-  prism: wubi06_pinyin
+  dictionary: wubi86
+  prism: wubi86_pinyin
   enable_charset_filter: true
   enable_sentence: false              # 五笔建议关闭连打成句，保持单字/词组精准度
   enable_encoder: true

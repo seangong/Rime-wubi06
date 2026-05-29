@@ -7,6 +7,7 @@
 patch:
   schema_list:
     - schema: wubi06_pinyin
+    - schema: wubi86_pinyin
     - schema: pinyin_simp
  
   # Menu
