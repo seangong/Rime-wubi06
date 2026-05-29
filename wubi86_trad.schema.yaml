@@ -45,9 +45,9 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - table_translator                 # 五笔翻译器
-    - script_translator@pinyin         # 拼音混输翻译器
-    - reverse_lookup_translator        # 反查翻译器
+    - table_translator                  # 五笔翻译器
+    - script_translator@pinyin          # 拼音混输翻译器
+    - reverse_lookup_translator         # 反查翻译器
   filters:
     - simplifier
     - uniquifier
@@ -55,27 +55,31 @@ engine:
 # 五笔主输入配置
 translator:
   dictionary: wubi86
-  prism: wubi86_pinyin
   enable_charset_filter: true
-  enable_sentence: false              # 五笔建议关闭连打成句，保持单字/词组精准度
+  enable_sentence: false                # 五笔建议关闭连打成句，保持单字/词组精准度
   enable_encoder: true
   encode_commit_history: true
   max_phrase_length: 4
   disable_user_dict_for_patterns:
-    - "^[a-y]{1,3}$"                   # 保留原版精髓：五笔前3码绝对不调频，固定字序
+    - "^[a-y]{1,3}$"                    # 1-3码彻底锁死词频，不让拼音和用户词库乱调频
+  initial_quality: 10                   # 将五笔的权重设为最高
 
-# 独立拼音混输外挂（让方案完美支持直接打拼音）
+# 独立拼音混输外挂
 pinyin:
   dictionary: pinyin_simp
-  prism: wubi06_pinyin
   explicit_rendering: true
   tips: "〔拼音〕"
+  # prefix: "z"                          # 方案二：只有输入 z 开头才认为是拼音
+  initial_quality: 1                     # 将拼音的权重调低，让它不转去抢首位
+  disable_user_dict_for_patterns:
+    - "^[a-z]{1,2}$"
 
 speller:
   delimiter: " ;'"
   max_code_length: 4                      # 最长 4 码
   auto_select: true                       # 顶字上屏
   auto_select_unique_candidate: true      # 无重码自动上屏
+  alphabet: zabcdefghijklmnopqrstuvwxy    # 明确声明允许的按键（五笔通常不用 z，但拼音需要）
 
 # ctrl + ` 键反查逻辑
 reverse_lookup:
@@ -104,6 +108,7 @@ recognizer:
   patterns:
     punct: "^/([a-z]+|[0-9])$"
     reverse_lookup: "`[a-z]*'?$"
+    # pinyin: "^z[a-z]*$"                # 方案二：正则：z 开头的输入分流给 pinyin 翻译器
 
 show_notifications_via_notification_center: false
 us_keyboard_layout: true
