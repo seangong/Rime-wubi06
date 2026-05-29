@@ -2,13 +2,13 @@
 # encoding: utf-8
 
 schema:
-  schema_id: wubi_trad
-  name: 五笔86·简入繁出
+  schema_id: wubi86_trad_pinyin
+  name: "86版五笔·简入繁出·拼音"
   version: "0.7"
   author:
     - sean gong
   description: |
-    五笔字型86版 简入繁出
+    五笔86版简入繁出+拼音混合输入
     需要安裝 opencc 簡繁转换词典
   dependencies:
     - pinyin_simp
@@ -45,48 +45,69 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - reverse_lookup_translator
-    - table_translator
+    - table_translator                 # 五笔翻译器
+    - script_translator@pinyin         # 拼音混输翻译器
+    - reverse_lookup_translator        # 反查翻译器
   filters:
     - simplifier
     - uniquifier
 
-speller:
-  delimiter: " ;'"
-  #max_code_length: 4
-
+# 五笔主输入配置
 translator:
   dictionary: wubi86
-  prism: wubi_trad
+  prism: wubi86_pinyin
   enable_charset_filter: true
+  enable_sentence: false              # 五笔建议关闭连打成句，保持单字/词组精准度
+  enable_encoder: true
+  encode_commit_history: true
+  max_phrase_length: 4
   disable_user_dict_for_patterns:
-    - "^z.*$"
+    - "^[a-y]{1,3}$"                   # 保留原版精髓：五笔前3码绝对不调频，固定字序
 
-abc_segmentor:
-  extra_tags:
-    - reverse_lookup
+# 独立拼音混输外挂（让方案完美支持直接打拼音）
+pinyin:
+  dictionary: pinyin_simp
+  prism: wubi06_pinyin
+  explicit_rendering: true
+  tips: "〔拼音〕"
 
+speller:
+  delimiter: " ;'"
+  max_code_length: 4                      # 最长 4 码
+  auto_select: true                       # 顶字上屏
+  auto_select_unique_candidate: true      # 无重码自动上屏
+
+# ctrl + ` 键反查逻辑
 reverse_lookup:
   dictionary: pinyin_simp
   prefix: "`"
   suffix: "'"
-  tips: 〔拼音〕
+  tips: 〔拼音反查〕
   preedit_format:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/
-    - xform/([jqxy])v/$1u/
+    - xform/([jqxy])v/$1/
 
-simplifier:
-  opencc_config: s2t.json
-  option_name: zh_trad
-
-punctuator:
-  import_preset: default
-
+# 快捷键魔改
 key_binder:
   import_preset: default
+  bindings:
+    - {accept: Return, send: Escape, when: composing}   # 回车清空输入码
+    - {accept: semicolon, send: 2, when: has_menu}      # 分号选第 2 重码
+    - {accept: apostrophe, send: 3, when: has_menu}     # 单引号选第 3 重码
+
+punctuator:
+  import_preset: symbols
 
 recognizer:
   import_preset: default
   patterns:
+    punct: "^/([a-z]+|[0-9])$"
     reverse_lookup: "`[a-z]*'?$"
+
+show_notifications_via_notification_center: false
+us_keyboard_layout: true
+
+simplifier:
+  opencc_config: s2t.json
+  option_name: zh_trad
