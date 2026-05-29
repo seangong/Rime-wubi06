@@ -6,7 +6,14 @@ macOS 版 鼠须管 新世纪五笔+拼音配置。
 2、支持五笔和拼音混输，2 码默认是五笔，不会触发拼音输入。
 3、拼音输入超过 3 码，会自动切换到拼音输入模式，不需要特殊键触发。
 4、使用 `（即 1 左侧那个键） 触发拼音反查五笔。
+
+![Xnip2026-05-29_17-11-26.jpg](https://github.com/seangong/Rime-wubi06/blob/master/doc/Xnip2026-05-29_17-11-26.jpg)
+
+![Xnip2026-05-29_17-11-47.jpg](https://github.com/seangong/Rime-wubi06/blob/master/doc/Xnip2026-05-29_17-11-47.jpg)
+
 5、使用 Ctrl + `（即 1 左侧那个键） 触发不同输入法切换选择菜单。
+
+![Xnip2026-05-29_17-10-11.jpg](https://github.com/seangong/Rime-wubi06/blob/master/doc/Xnip2026-05-29_17-10-11.jpg)
 
 
 # 鼠须管词库挂载配置
@@ -33,3 +40,16 @@ patch:
 ```
 
 4、重启部署即可。
+
+
+# 新世纪五笔字根
+
+![新世纪字根图.jpg](https://github.com/seangong/Rime-wubi06/blob/master/doc/%E6%96%B0%E4%B8%96%E7%BA%AA%E5%AD%97%E6%A0%B9%E5%9B%BE.jpg)
+
+# 新旧版本字根变动表
+
+![新世纪版与86版字根变动表.jpg](https://github.com/seangong/Rime-wubi06/blob/master/doc/%E6%96%B0%E4%B8%96%E7%BA%AA%E7%89%88%E4%B8%8E86%E7%89%88%E5%AD%97%E6%A0%B9%E5%8F%98%E5%8A%A8%E8%A1%A8.jpg)
+
+# 汉字笔顺规则表
+
+![汉字笔顺规则表.jpg](https://github.com/seangong/Rime-wubi06/blob/master/doc/%E6%B1%89%E5%AD%97%E7%AC%94%E9%A1%BA%E8%A7%84%E5%88%99%E8%A1%A8.jpg)
