@@ -16,7 +16,7 @@ macOS 版 鼠须管 新世纪五笔+拼音配置。
 2、将下载的字库解压到这个目录，字库不要创建子目录放字库。直接将 yml 文件全扔到 ~/Library/Rime 目录即可。
 
 3、如果不想覆盖自己的配置，在 default.custom.yaml 配置文件加上 wubi06_pinyin 即可。
-
+　
 ```yml
 # default.custom.yaml
 # save it to:
