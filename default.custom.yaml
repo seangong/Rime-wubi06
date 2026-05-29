@@ -22,10 +22,10 @@ patch:
       - "Shift+Control+grave"
     option_list_separator: "｜"
     save_options:
-      - full_shape
-      - ascii_punct
-      - simplification
-      - extended_charset
+      - full_shape         # 全角/半角 (对应菜单里的「符」)
+      - ascii_punct        # 英文标点/中文标点
+      - simplification     # 简体/繁体 (对应菜单里的「简」)
+      - extended_charset   # 通用/增广 (对应菜单里的「有」)
 
   #-----------------------------------------------
   # 中英文切换自定义
