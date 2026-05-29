@@ -8,8 +8,7 @@ schema:
   author:
     - 发明人 王永民先生
   description: |
-    五笔字型新世纪版＋汉语拼音混合输入。
-    码表源自 ibus-table
+    五笔字型新世纪版＋汉语拼音混合输入
   dependencies:
     - pinyin_simp
 

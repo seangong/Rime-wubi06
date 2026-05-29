@@ -52,7 +52,7 @@ recognizer:
   import_preset: default
   patterns:
     punct: "^/([a-z]+|[0-9])$"
-    reverse_lookup: "^z[a-z]*$"
+    reverse_lookup: "^[a-z]*$"
 reverse_lookup:
   dictionary: pinyin_simp
   preedit_format:
@@ -65,9 +65,6 @@ schema:
     - "发明人 王永民先生"
   description: |
     五笔字型新世纪五笔
-    碼表源自 qq
-    敲 z 键进入拼音反查
-    
   name: "新世纪五笔"
   schema_id: wubi06
   version: 0.1.custom.173635732

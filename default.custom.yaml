@@ -9,7 +9,6 @@ patch:
     - schema: wubi06_pinyin
     - schema: pinyin_simp
  
-
   # Menu
   menu:
     page_size: 6         # 候选词数量
@@ -23,10 +22,10 @@ patch:
       - "Shift+Control+grave"
     option_list_separator: "｜"
     save_options:
-            - full_shape
-            - ascii_punct
-            - simplification
-            - extended_charset
+      - full_shape
+      - ascii_punct
+      - simplification
+      - extended_charset
 
   #-----------------------------------------------
   # 中英文切换自定义
@@ -35,8 +34,6 @@ patch:
   # commit_text   已输入的候选文字上屏并切换至英文输入模式
   # commit_code   已输入的编码字符上屏并切换至英文输入模式
   # -----------------------------------------------
-  # 参考链接： https://gist.github.com/lotem/2981316
-
   ascii_composer:
     good_old_caps_lock: true        # true: 在保持 cap 键原有的特征， false: 点击不会切换大小写
     switch_key:
@@ -46,11 +43,10 @@ patch:
       Control_L: noop
       Control_R: noop
 
-
   key_binder:
     bindings:
-      #     - {accept: comma, send: 2, when: has_menu}  # 候选2 用逗号选择 （修改的时候不要多加或少加空格，跟前面的对齐就好了）
-      #     - {accept: period, send: 3, when: has_menu} # 候选3 用句号选择
+      #  - {accept: comma, send: 2, when: has_menu}  # 候选2 用逗号选择 （修改的时候不要多加或少加空格，跟前面的对齐就好了）
+      #  - {accept: period, send: 3, when: has_menu} # 候选3 用句号选择
       - {accept: semicolon, send: 2, when: has_menu}  # 候选2 用分号
       - {accept: apostrophe, send: 3, when: has_menu} # 候选3 用单引号
       - {accept: bracketleft, send: Page_Up, when: paging}
