@@ -1,4 +1,4 @@
-# macOS 鼠须管
+# 新世纪五笔+拼音
 
 macOS 版 鼠须管 新世纪五笔+拼音配置。 
 
@@ -7,7 +7,7 @@ macOS 版 鼠须管 新世纪五笔+拼音配置。
 2、 五笔与拼音 二合一，五笔输入时遇到不会输入的字，直接输入拼音即可，不用在五笔和拼音之间切换。
 
 
-# 配置
+# 鼠须管词库挂载配置
 
 1、点击 输入法 ---> 用户设定，会打开输入法配置目录。
 
@@ -24,8 +24,8 @@ macOS 版 鼠须管 新世纪五笔+拼音配置。
 
 patch:
   schema_list:
-    - schema: wubi06_pinyin
-    - schema: clover          # 将四叶草输入法加到这里即可
+    - schema: wubi06_pinyin   # 新世纪五笔+拼音
+    - schema: clover          # 四叶草拼音输入法
     - schema: pinyin_simp
 ```
 
