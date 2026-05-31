@@ -56,16 +56,20 @@ translator:
   disable_user_dict_for_patterns:
     - "^[a-y]{1,3}$"                    # 1-3码彻底锁死词频，不让拼音和用户词库乱调频
   initial_quality: 10                   # 将五笔的权重设为最高
+  comment_format:
+    - "xform/^/ /"
 
 # 独立拼音混输外挂
 pinyin:
   dictionary: pinyin_simp
   explicit_rendering: true
   tips: "〔拼音〕"
-  # prefix: "z"                          # 方案二：只有输入 z 开头才认为是拼音
   initial_quality: 1                     # 将拼音的权重调低，让它不转去抢首位
   disable_user_dict_for_patterns:
     - "^[a-z]{1,2}$"
+  reverse_lookup: table_translator      # 指定拼音字后方的提示由五笔翻译器提供
+  comment_format:
+    - "xform/^/ /"                      # 提示码前加空格
 
 speller:
   delimiter: " ;'"
@@ -101,7 +105,6 @@ recognizer:
   patterns:
     punct: "^/([a-z]+|[0-9])$"
     reverse_lookup: "`[a-z]*'?$"
-        # pinyin: "^z[a-z]*$"                # 方案二：正则：z 开头的输入分流给 pinyin 翻译器
 
 show_notifications_via_notification_center: false
 us_keyboard_layout: true
