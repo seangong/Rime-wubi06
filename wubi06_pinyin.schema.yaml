@@ -52,7 +52,7 @@ translator:
   enable_sentence: false                # 五笔建议关闭连打成句，保持单字/词组精准度
   enable_encoder: true
   encode_commit_history: true
-  max_phrase_length: 4
+  max_phrase_length: 8
   disable_user_dict_for_patterns:
     - "^[a-y]{1,3}$"                    # 1-3码彻底锁死词频，不让拼音和用户词库乱调频
   initial_quality: 10                   # 将五笔的权重设为最高
@@ -73,10 +73,11 @@ pinyin:
 
 speller:
   delimiter: " ;'"
-  max_code_length: 4                      # 最长 4 码
-  auto_select: true                       # 顶字上屏
-  auto_select_unique_candidate: true      # 无重码自动上屏
-  alphabet: zabcdefghijklmnopqrstuvwxy    # 明确声明允许的按键（五笔通常不用 z，但拼音需要）
+  max_code_length: 30                      # 最长 30 码
+  auto_select: true                        # 顶字上屏
+  auto_select_pattern: "^[a-y]{4}$"
+  auto_select_unique_candidate: false      # 无重码自动上屏
+  alphabet: abcdefghijklmnopqrstuvwxyz     # 明确声明允许的按键（五笔通常不用 z，但拼音需要）
 
 # ctrl + ` 键反查逻辑
 reverse_lookup:
